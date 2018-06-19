@@ -1,0 +1,48 @@
+﻿@model PPG_projekt.Models.AdminViewModels.AdvertDetailViewModel
+@{
+    ViewData["Title"] = "AdvertDetalis";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div class="container content">
+        <div class="col-12 admin">
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">AdvertID:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Advert.AdvertId) </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Date:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Advert.AddDate)  </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">City:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.City ) </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Description:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Advert.Description)  </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Price:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Advert.Price)  </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">UserID:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.User)  </div>
+            </div>
+
+            <p> @Html.ActionLink("Back", "AdvertsList")</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model PPG_projekt.Models.AccountViewModels.LoginUser
+@{
+    ViewBag.Title = "Login";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+<body>
+    <div class="w3-container">
+        <div class="container page-content col-lg-6">
+            <div class="container registration-form login text-center">
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <form>
+                        @Html.ValidationSummary(true)
+                        @Html.AntiForgeryToken()
+                        <div class="container">
+                            <p class="text-center">Logowanie</p>
+                            <div class="text-center">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "col-10 center form-control text-center", placeholder = "Email", tabindex = 1 })
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                            <div class="text-center">
+                                @Html.PasswordFor(m => m.Password, new { @class = "col-10 center form-control text-center", placeholder = "Hasło", tabindex = 2 })
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+                            <p class="text-center">@ViewBag.Message</p>
+                            <button type="submit" class="col-10 center btn btn-danger btn-lg btn-block btn-def">Zaloguj się</button>
+                            <div class="text-center"><a href="#" class="password-link">Zapomniałeś hasła?</a></div>
+                            <div class="text-center">
+                                <a href="@Url.Action("Register", "Account")" class="password-link">Zarejestruj się</a>
+                            </div>
+                    </form>
+                }
+                <p><img src="~/images/ppg_logo.png" alt="Logo" class="ppgLogo"></p>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+
+

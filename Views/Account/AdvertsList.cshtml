@@ -1,0 +1,70 @@
+﻿@model PPG_projekt.Models.AdminViewModels.AdvertsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<div class="container content">
+
+    <div class="container registration-form col-lg-12 center">
+        <div class="row">
+            <div class="col col-lg-3">
+
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("EditAccount", "Account")'">Edycja Konta </button>
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AddressesList", "Account")'">Adresy </button>
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AdvertsList", "Account")'">Oferty </button>
+
+
+            </div>
+            <div class="col admin">
+
+                <table class="table">
+                    <tr>
+                        <th>
+                            ID
+                        </th>
+                        <th>
+                            Data
+                        </th>
+                        <th>
+                            Opis
+                        </th>
+                        <th>
+                            ID użytkownika
+                        </th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model.Adverts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdvertId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "AdvertDetails", new { id = item.AdvertId }) |
+                    @Html.ActionLink("Delete", "DeleteAdvert", new { id = item.AdvertId })
+                </td>
+            </tr>
+}
+                </table>
+            </div>
+        </div>
+</div>
+</div>
+</html>

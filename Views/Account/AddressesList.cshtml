@@ -1,0 +1,70 @@
+﻿@model PPG_projekt.Models.AccountViewModels.AddressesListViewModel
+@{
+    ViewData["Title"] = "AddressList";
+}
+
+<div class="container content">
+    <div class="container registration-form col-lg-12 center">
+        <div class="row">
+            <div class="col col-lg-3">
+
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("EditAccount", "Account")'">Edycja Konta </button>
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AddressesList", "Account")'">Adresy </button>
+                <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AdvertsList", "Account")'">Oferty </button>
+
+            </div>
+            <div class="col">
+                <table class="table admin-table">
+                    <thead class="table-head">
+                        <tr>
+                            <th>
+                                Województwo
+                            </th>
+                            <th>
+                                Miasto
+                            </th>
+                            <th>
+                                Ulica
+                            </th>
+                            <th>
+                                Telefon
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                        @foreach (var item in Model.Addresses)
+                 {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Voivodeship)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Street)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <div class="img-zoom">
+                                <button type="button" class="btn-transparent" title="Szczegóły" onclick="location.href='@Url.Action("AddressDetails", "Account",new { id = item.AdressId })'"> <img src="~/images/icons/icons8-more-details-50.png" width="30" height="30" /></button>
+                            </div>
+                            <div class="img-zoom">
+                                <button type="button" class="btn-transparent" title="Dezaktywuj" onclick="location.href='@Url.Action("DeactivateAddress", "Account",new { id = item.AdressId })'"><img src="~/images/icons/icons8-unavailable-50.png" width="30" height="30" /></button>
+                            </div>
+                        </div>
+                    </td>
+                    </tr>
+                    }
+                </table>
+            </div>
+
+        </div>
+        <div class="col col-lg-3  float-right">
+            <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AddUserAddress", "Account")'">Dodaj adres </button>
+        </div>
+    </div>
+</div>

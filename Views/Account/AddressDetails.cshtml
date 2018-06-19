@@ -1,0 +1,40 @@
+﻿@model PPG_projekt.Models.AdminViewModels.AddressDetalisViewModel
+@{
+    ViewData["Title"] = "AdvertDetalis";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div class="container content">
+        <div class="col-12 admin">
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">AddressID:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.AdressId) </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Voivodeship:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.Voivodeship)  </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">City:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.City) </div>
+            </div>
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Street:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Address.Street)  </div>
+            </div>
+
+            <p> @Html.ActionLink("Back", "AddressesList")</p>
+        </div>
+    </div>
+</body>
+</html>

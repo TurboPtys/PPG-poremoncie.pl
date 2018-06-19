@@ -1,0 +1,98 @@
+﻿@using Microsoft.AspNetCore.Http;
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims
+@using PPG_projekt.Models;
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"] - PPG_projekt</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.min.css" integrity="sha256-BJ/G+e+y7bQdrYkS2RBTyNfBHpA9IuGaPmf9htub5MQ=" crossorigin="anonymous" />
+</head>
+<body>
+    <div class="w3-container text-center">
+        <nav class="navbar navbar-search navbar-expand-lg navbar-dark">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse">
+                <div class="navbar-nav ml-auto">
+                    <button type="button" class="btn btn-danger btn-md col-sm-4">Dodaj nową oferte</button>
+                    <label for="colFormLabel" class="col-sm-3 col-form-label"><span class="oi oi-magnifying-glass">Wyszukaj:</span></label>
+                    <input type="text" class="form-control col-sm-5" placeholder="Wpisz..." name="search">
+                </div>
+            </div>
+        </nav>
+        <nav class="navbar navbar-main navbar-expand-lg navbar-dark">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")"><img class="poremoncie" src="~/images/logo_wale.png" alt="Logo"> poRemoncie</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="navbar-collapse">
+
+                <div class="navbar-nav ml-auto">
+                    @if (User.IsInRole("Admin"))
+                    {
+
+                        <div class="dropdown">
+                            <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="@Url.Action("UsersList", "Admin", new { activ=true})">Użytkowwnicy</a>
+                                <a class="dropdown-item" href="@Url.Action("AdvertsList", "Admin", new { activ=true})">Ogłoszenia</a>
+                                <a class="dropdown-item" href="@Url.Action("AddressesList", "Admin", new { activ=true})">Adresy</a>
+                                <a class="dropdown-item" href="@Url.Action("DictionariesList", "Admin", new { i = 1,activ=true })">Słowniki</a>
+                                <a class="dropdown-item" href="@Url.Action("SubObjList", "Admin", new { i = 21,activ=true })">SubKategorie</a>
+                            </div>
+                        </div>
+                    }
+                    <a class="nav-item nav-link" href="@Url.Action("Lista_ogloszen", "Advert")">Ogloszenia</span></a>
+                    <a class="nav-item nav-link" href="#"><span class="oi oi-plus">&nbspDodaj Ofertę</span><span class="sr-only">(current)</span></a>
+                    <a class="nav-item nav-link" href="#"><span class="oi oi-medical-cross">&nbspPomagam</span></a>
+                    <a class="nav-item nav-link" href="#"><span class="oi oi-globe">&nbspO nas</span></a>
+                    @if (!User.Identity.IsAuthenticated)
+                    {
+
+                        <a class="nav-item nav-link" href="@Url.Action("login", "account")"><span class="oi oi-key">&nbspZaloguj się</span></a>
+                    }
+                    else
+                    {
+
+                        <a class="nav-item nav-link" href="@Url.Action("EditAccount", "Account")"><span class="oi oi-person" title="person" aria-hidden="true">&nbspTwoje konto</span></a>
+                        <a class="nav-item nav-link" href="@Url.Action("logout", "Account")"><span class="oi oi-account-logout" title="person" aria-hidden="true">&nbspWyloguj</span></a>
+                    }
+                </div>
+            </div>
+        </nav>
+        @RenderBody()
+        @RenderSection("Scripts", required: false)
+
+
+
+        <div class="footer-copyright py-1 text-center">
+            <p>
+                © 2018 Copyright:
+                <a href="http://corporate.ppg.com/Home.aspx"> PPG.com </a>
+                <a href="http://corporate.ppg.com/Home.aspx">
+                    <img class="logo" src="~/images/ppg_logo.png" alt="Logo">
+                </a>
+                <a href="https://www.facebook.com/">
+                    <img class="logo" src="~/images/facebook_logo.png" alt="Logo">
+                </a>
+                <a href="https://www.instagram.com/?hl=pl">
+                    <img class="logo" src="~/images/insta_logo.png" alt="Logo">
+                </a>
+            </p>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js" integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1" crossorigin="anonymous"></script>
+</body>
+</html>

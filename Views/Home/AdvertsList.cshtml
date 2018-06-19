@@ -1,0 +1,54 @@
+﻿@model PPG_projekt.Models.AdminViewModels.AdvertsViewModel
+
+<!doctype html>
+<html lang="pl">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<div class="container content">
+    <div class="container admin col-lg-12">
+
+        <table class="table">
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Date
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    UserId
+                </th>
+                <th></th>
+            </tr>
+            @foreach (var item in Model.Adverts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AdvertId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AddDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserId)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "AdvertDetails", new { id = item.AdvertId }) |
+                    @Html.ActionLink("Delete", "DeleteAdvert", new { id = item.AdvertId })
+                </td>
+            </tr>
+    }
+        </table>
+    </div>
+</div>

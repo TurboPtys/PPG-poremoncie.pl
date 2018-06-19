@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewData["Title"] = "EditAccount";
+}
+
+@model PPG_projekt.Models.AccountViewModels.EditAccountViewModel
+<!doctype html>
+<html lang="pl">
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container content">
+
+        <div class="container registration-form col-lg-12 center">
+            <div class="row">
+                <div class="col col-lg-3 col-md-3">
+                    
+                        <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("EditAccount", "Account")'">Edycja Konta </button>
+                        <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AddressesList", "Account")'">Adresy </button>
+                        <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AdvertsList", "Account")'">Oferty </button>
+                    
+                </div>
+                 <div class="col">
+            @using (Html.BeginForm("EditAccount", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                     <form>
+                         @Html.ValidationSummary(true)
+                         @Html.AntiForgeryToken()
+                         <p class="text-center">Edycja konta</p>
+
+                         <div class="form-group row">
+                             <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Stare Hasło</label>
+                             <div class="col-sm-6">
+                                 @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control", placeholder = "Stare Haslo", tabindex = 1 })
+                                 @Html.ValidationMessageFor(m => m.OldPassword)
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Nowe Hasło</label>
+                             <div class="col-sm-6">
+                                 @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Nowe Haslo", tabindex = 2 })
+                                 @Html.ValidationMessageFor(m => m.Password)
+                             </div>
+                         </div>
+                         <div class="form-group row">
+                             <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Powtórz Hasło</label>
+                             <div class="col-sm-6">
+                                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Nowe Haslo", tabindex = 3 })
+                                 @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                             </div>
+                         </div>
+                         <p class="text-center">@ViewBag.Message</p>
+                         <div class="col-lg-9 col-12 center">
+                             <button type="submit" class="btn btn-danger btn-lg btn-block">Zapisz </button>
+                         </div>
+                         <p><img src="~/images/ppg_logo.png" alt="Logo" class="ppgLogo"></p>
+                     </form>
+            }
+                     </div>
+                </div>
+        </div>
+    </div>
+</body>
+</html>

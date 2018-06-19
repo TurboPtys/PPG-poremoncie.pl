@@ -1,0 +1,57 @@
+﻿@model IEnumerable<PPG_projekt.Models.AdvertViewModels.AdvertsListVievModel>
+@{
+    ViewData["Title"] = "Index";
+}
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<div class="container">
+    <div class="container admin-panel col-lg-12">
+        @using (Html.BeginForm("AdvertsList", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <form>
+                <div class="row center">
+                    <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("AdvertsList", "Admin",new { activ=true})'">Aktywne </button>
+                    <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("AdvertsList", "Admin",new { activ=false})'">Nieaktywne </button>
+
+                    <div class="col-lg-3 center">
+                        @Html.TextBox("searchString", "", new { @class = "form-control", placeholder = "ID" })
+                    </div>
+                    <button type="submit" class="btn btn-danger col-lg-2 center">szukaj </button>
+
+                </div>
+            </form>
+        }
+    </div>
+</div>
+<div class="container page-content advert-back">
+    <div class="col-xl-12">
+        <hr>
+        @foreach (var i in Model)
+        {
+            <div class="row">
+                <div class="col-xl-4">
+                    <div class="pic-offer">
+                        <img src="@i.Photo.Path" class="rounded" onerror="this.src='images/default.png'">
+                    </div>
+                </div>
+                <div class="col-xl-8">
+                    <div class="offer-header">
+                        <h2 onclick="location.href='@Url.Action("AdvertDetails", "Admin", new{id = i.Advert.AdvertId})'">@i.Advert.Title</h2>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 offer-lower-text text-left padding-left-small">@i.Address.City, ul. @i.Address.Street</div>
+                        <div class="col-xs-2 offer-lower-text font-weight-bold margin-right padding-right-small">@i.Advert.Price zł</div>
+                    </div>
+                </div>
+            </div>
+
+            <hr>
+        }
+    </div>
+</div>

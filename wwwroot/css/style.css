@@ -1,0 +1,429 @@
+﻿body {
+  background-image: url("../images/remont.jpg");
+  color: white;
+  min-height: 100%;
+  position: relative; }
+
+html {
+  height: 100%;
+  box-sizing: border-box; }
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit; }
+
+/*.footer-copyright {
+    margin-top: 4%;
+    background-color: #efefef;
+    clear: both;
+    position: relative;
+    text-align: center;
+    color: black;
+}*/
+.footer-copyright {
+  background-color: black;
+  clear: both;
+  /*z-index: 10;*/
+  text-align: center;
+  color: snow;
+  border-top: 1px solid black;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute; }
+
+.brands {
+  background-color: white;
+  position: relative;
+  text-align: center;
+  clear: both;
+  border-top: 1px solid black;
+  bottom: 40px;
+  left: 0;
+  right: 0;
+  width: 100%; }
+
+.navbar-search {
+  background-color: gray;
+  border-bottom: 2px solid snow;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1; }
+
+.navbar-main {
+  background-color: black;
+  border-bottom: 2px solid snow;
+  padding-top: 60px;
+  position: relative;
+  width: 100%;
+  clear: both; }
+
+.search-frame {
+  padding-top: 5%;
+  padding-bottom: 12%;
+  text-align: center;
+  /*background-color: white;*/
+  background-image: url("../images/remont.jpg");
+  background-size: 100% 100%;
+  border: 1px solid snow; }
+
+.background-clear {
+  background-image: none;
+  background-color: white; }
+
+img.logo {
+  width: 25px; }
+
+img.logo2 {
+  width: 70px; }
+
+img.poremoncie {
+  width: 40px; }
+
+#labelFix {
+  margin-left: 0; }
+
+.margin-top-small {
+  margin-top: 15px; }
+
+.margin-top-med {
+  margin-top: 40px; }
+
+.margin-auto {
+  margin: auto; }
+
+.margin-bottom {
+  margin-top: auto; }
+
+.margin-right {
+  margin-left: auto; }
+
+.color-white {
+  color: white; }
+
+.color-black {
+  color: black; }
+
+.padding-left-small {
+  padding-left: 15px; }
+
+.padding-right-small {
+  padding-right: 30px; }
+
+.padding-top-med {
+  padding-top: 40px; }
+
+.padding-bottom-big {
+  padding-bottom: 200px; }
+
+.center {
+  margin-left: auto;
+  margin-right: auto; }
+
+.box-blue {
+  background-color: #007bff;
+  margin-top: 20px;
+  border-radius: 12px; }
+
+.description {
+  padding-top: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  padding-bottom: 10px;
+  font-size: 14px; }
+
+.page-content {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.advert-back {
+  margin-top: 5%;
+  margin-bottom: 5%;
+  text-align: center;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: white; }
+
+.page {
+  margin-top: 5%;
+  margin-right: 10%;
+  margin-left: 10%;
+  margin-bottom: 5%;
+  background-image: url("../images/tlo.png");
+  border-radius: 12px; }
+
+.navbar {
+  border-top-right-radius: 12px;
+  border-top-left-radius: 12px; }
+
+.pic-main {
+  margin-top: 40px;
+  max-width: 100%;
+  width: 256px;
+  height: auto;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.quantity {
+  color: black;
+  margin-left: 20px; }
+
+.resizable {
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto; }
+
+.messenge {
+  margin-bottom: 20px; }
+
+.pic-mini {
+  border: solid white;
+  width: 60px;
+  display: block;
+  height: 60px; }
+
+.pic-profile {
+  border: solid white;
+  width: 210px;
+  height: 280px; }
+
+.info {
+  margin-top: 5%;
+  font-size: 20px;
+  font-weight: 500;
+  color: black; }
+
+.captcha {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 400px;
+  height: auto;
+  max-width: 100%; }
+
+#map {
+  width: 100%;
+  height: 400px; }
+
+.categories {
+  margin-top: 30px; }
+
+.search {
+  margin-bottom: 20px;
+  padding-bottom: 20px; }
+
+.add {
+  margin-top: 80px;
+  color: black; }
+
+.search-header {
+  padding-top: 10px; }
+
+.search-engine {
+  background-color: #007bff;
+  border-radius: 12px; }
+
+.offers-header {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: #007bff;
+  border-radius: 12px; }
+
+.offer-header {
+  margin-top: 10px;
+  color: black;
+  text-align: left; }
+
+.offer-lower-text {
+  color: black;
+  margin-top: 60px; }
+
+.pic-offer img {
+  border: solid white;
+  border-radius: 12px;
+  width: 200px;
+  height: 150px; }
+
+.search-form {
+  color: white;
+  background-color: #e29000;
+  width: 400px;
+  margin-bottom: 2%;
+  text-align: left;
+  max-width: 90%;
+  border: 4px solid snow; }
+
+.search-form p {
+  font-size: 23px;
+  font-weight: 500; }
+
+.btn-def {
+  margin-top: 15px;
+  margin-bottom: 15px; }
+
+.login input {
+  font-size: 25px;
+  margin-top: 15px; }
+
+.bar-user {
+  margin-left: 17.5%;
+  width: 65%;
+  font-weight: 900;
+  font-size: 25px;
+  color: white; }
+
+.panel {
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-bottom: 5%; }
+
+.admin {
+  color: white;
+  background-color: #e29000; }
+
+.admin-panel {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin-top: 3%;
+  margin-bottom: 2%;
+  background-color: black;
+  border-radius: 15px; }
+
+.admin-table {
+  margin-top: 2%;
+  margin-bottom: 10%;
+  color: white;
+  background-color: #e29000; }
+
+.admin-table tr:nth-child(even) {
+  background-color: #ffb433; }
+
+/*.admin-table tr:hover {
+    background-color: #b37100;
+}*/
+.table-head {
+  background-color: black; }
+
+.img-zoom {
+  transition: transform .2s; }
+
+.img-zoom:hover {
+  transform: scale(1.5); }
+
+.btn-transparent {
+  background-color: transparent;
+  border-color: transparent;
+  cursor: pointer; }
+
+.ppgLogo {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 30px; }
+
+.give {
+  margin-bottom: 2%; }
+
+.give img {
+  max-width: 90%;
+  height: 340px; }
+
+.password-link {
+  margin-left: 15px;
+  margin-top: 2%;
+  color: #ffffff; }
+
+.password_link a {
+  padding-top: 2%;
+  color: #ffffff; }
+
+.terms-of-use-link {
+  color: #ffcf07;
+  font-weight: 800; }
+
+.registration-form {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+.registration-form p {
+  padding-top: 15px;
+  font-size: 23px;
+  font-weight: 500; }
+
+.registration-form form {
+  color: white;
+  background-color: #e29000;
+  border: 4px solid snow;
+  padding-bottom: 15px; }
+
+.content {
+  margin-top: 10%; }
+
+.oi-arrow-thick-left {
+  color: white;
+  margin-top: 20px; }
+
+.margin-arrow {
+  margin-top: 18px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.RegCliButton {
+  border-bottom: 8px solid #ffffff; }
+
+h1 {
+  border-bottom: 1px solid #000;
+  color: #000;
+  font-size: 18px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center; }
+
+h1 span {
+  background: #fff;
+  padding: 0 1px;
+  position: relative;
+  top: 10px; }
+
+.headline_2 {
+  color: red;
+  font-size: 18px; }
+
+.sidenav {
+  margin-top: 60px;
+  background-color: #111;
+  margin-left: 2%;
+  position: fixed;
+  z-index: 1; }
+
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block; }
+
+.sidenav a:hover {
+  color: #f1f1f1; }
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px; }
+  .sidenav a {
+    font-size: 18px; } }

@@ -1,0 +1,76 @@
+﻿@model PPG_projekt.Models.AccountViewModels.AddUserAddressViewModel
+@using PPG_projekt.Models.AccountViewModels
+
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container content">
+
+        <div class="container registration-form col-lg-8 center">
+            <div class="col col-lg-3  float-left">
+            <button type="button" class="btn btn-danger btn-lg btn-block" onclick="location.href='@Url.Action("AddressesList", "Account")'">Wróć </button>
+        </div>
+            @using (Html.BeginForm("AddUserAddress", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <form>
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <p class="text-center">Adres</p>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Województwo</label>
+                    <div class="col-sm-6">
+                        @Html.DropDownListFor(m => m.Voivodeship, Model.Voivodeships,new { @class = "form-control", tabindex = 1 })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Miasto</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.City, new { @class = "form-control", placeholder = "Miasto", tabindex = 2 })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Ulica</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Street, new { @class = "form-control", placeholder = "Ulica", tabindex = 3 })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Nr Domu</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.HouseNr, new { @class = "form-control", placeholder = "Nr Domu", tabindex = 4 })
+                    </div>
+                    <label for="colFormLabel" class="col-sm-2 col-form-label text-center" style="margin-left:0!important; ">Nr Lokalu</label>
+                    <div class="col-sm-2">
+                        @Html.TextBoxFor(m => m.LocalNr, new { @class = "form-control", placeholder = "Nr Lokalu", tabindex = 5 })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Kod Pocztowy</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.PostCode, new { @class = "form-control", placeholder = "Kod Pocztowy", tabindex = 6 })
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Telefon</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Phone, new { @class = "form-control", placeholder = "Nr Telefonu", tabindex = 7 })
+                    </div>
+                </div>
+                <p class="text-center">@ViewBag.Message</p>
+                <div class="col-lg-9 col-12 center">
+                    <button type="submit" class="btn btn-danger btn-lg btn-block">Dodaj Adres </button>
+                </div>
+                <p><img src="~/images/ppg_logo.png" alt="Logo" class="ppgLogo"></p>
+            </form>
+    }
+        </div>
+    </div>
+</body>
+</html>

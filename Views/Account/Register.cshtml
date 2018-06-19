@@ -1,0 +1,99 @@
+﻿@model PPG_projekt.Models.AccountViewModels.RegisterUser
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="~/js/scripts.js"></script>
+</head>
+<body>
+
+    <div class="container page-content">
+
+        <div class="form-group row bar-user">
+            <label class="col-sm-6 col-form-label text-center" id="RegOrgBtn" onclick="RegOrgBtnAction();">Organizacja</label>
+            <label class="col-sm-6 col-form-label text-center RegCliButton" id="RegCliBtn" onclick="RegCliBtnAction();">Klient</label>
+        </div>
+
+        <div class="container registration-form">
+            @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            <form>
+                @Html.ValidationSummary(true)
+                @Html.AntiForgeryToken()
+                <p class="text-center">Rejestracja</p>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Email</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", placeholder = "Email", tabindex = 1 })
+                        @Html.ValidationMessageFor(m => m.Email)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label" id="RegName">Imię</label>
+                    <div class="col-sm-6">
+                        @Html.TextBoxFor(m => m.Name, new { @class = "form-control", id = "inputName", placeholder = "Imię", tabindex = 2 })
+                        @Html.ValidationMessageFor(m => m.Name)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Hasło</label>
+                    <div class="col-sm-6">
+                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Haslo", tabindex = 3 })
+                        @Html.ValidationMessageFor(m => m.Password)
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Powtórz hasło</label>
+                    <div class="col-sm-6">
+                        @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", placeholder = "Haslo", tabindex = 4 })
+                        @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                    </div>
+                </div>
+                <div class="form-group row" hidden id="Nip">
+                    <label class="col-sm-3 col-form-label">Nip</label>
+                    <div class="col-sm-6">
+
+                        @Html.TextBoxFor(m => m.Nip, new { @class = "form-control", placeholder = "Nip", tabindex = 5 })
+                    </div>
+                </div>
+                <p class="text-center">@ViewBag.Message</p>
+                <div class="form-check form-group row">
+                    <label for="colFormLabel" class="col-sm-1 col-form-label">
+                    </label>
+                    <label class="form-check-label col-sm-9 col-form-label text-justify" for="defaultCheck1">
+                        @Html.CheckBoxFor(m => m.Regimen, new { @class = "form-check-input " })
+                        Oświadczam, że zapoznałem się z Regulaminem serwisu <a href="http://corporate.ppg.com/Home.aspx" class="terms-of-use-link">poRemoncie.pl</a> i akceptuję jego treść.
+                    </label>
+                </div>
+
+                <div class="form-check form-group row">
+                    <label for="colFormLabel" class="col-sm-1 col-form-label">
+                    </label>
+                    <label class="form-check-label col-sm-9 col-form-label text-justify" for="defaultCheck1">
+                        @Html.CheckBoxFor(m => m.PersonalData, new { @class = "form-check-input " })
+                        Wyrażam zgodę na przetwarzanie moich danych osobowych dla potrzeb niezbędnych do realizacji procesu rejestracji na portalu poRemoncie.pl (zgodnie z Ustawą z dnia 29.08.1997 roku o Ochronie Danych Osobowych; tekst jednolity: Dz. U. 2016 r. poz. 922).
+                    </label>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-12 col-form-label">
+                        <img src="~/images/re.png" alt="re" class="captcha">
+                    </label>
+                </div>
+              
+               
+                <button type="submit" class="btn btn-danger btn-lg btn-block col-sm-6 ml-auto center btn-def">Rejestruj</button>
+                <p><img src="~/images/ppg_logo.png" alt="Logo" class="ppgLogo"></p>
+            </form>
+            }
+        </div>
+    </div>
+
+</body>
+</html>
+
+
+
+
+

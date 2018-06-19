@@ -1,0 +1,50 @@
+﻿@model PPG_projekt.Models.AdminViewModels.DictionaryObjEdit
+@{
+    ViewData["Title"] = "DictionaryEdit";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <div class="w3-container">
+        <div class="container page-content col-lg-6">
+            <div class="container registration-form login text-center">
+                @using (Html.BeginForm("DictionaryObjEdit", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <form>
+                        <div class="container">
+                            <p class="text-center">Edycja  Objektu w Słowniku</p>
+                            <div class="form-group row text-center">
+                                <label class="col-sm-5 col-form-label" id="RegName">Słownik</label>
+                                <div class="col-sm-6">
+                                    @Html.DropDownListFor(m => m.DictionaryID, Model.Dictionaries, new { @class = "form-control", tabindex = 1 })
+                                </div>
+                            </div>
+                            <div class="form-group row text-center">
+                                <label class="col-sm-5 col-form-label" id="RegName">Nazwa</label>
+                                <div class="col-sm-6">
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "center form-control text-center", placeholder = @Model.Name, tabindex = 2 })
+                                    @Html.ValidationMessageFor(m => m.Name)
+                                </div>
+                            </div>
+                            <label class="form-check-label col-sm-9 col-form-label text-justify" for="defaultCheck1">
+                                @Html.CheckBoxFor(m => m.SubObj, new { @class = "form-check-input " })
+                                SubKategorie
+                            </label>
+
+                            @Html.HiddenFor(m => m.DictionaryObjID, Model.DictionaryObjID)
+                            <button type="submit" class="col-10 center btn btn-danger btn-lg btn-block btn-def">Edytuj</button>
+
+</form>
+                }
+                <p><img src="~/images/ppg_logo.png" alt="Logo" class="ppgLogo"></p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+

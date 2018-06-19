@@ -1,0 +1,138 @@
+﻿@model PPG_projekt.Models.IndexViewModels.SearchModel
+@using PPG_projekt.Models.IndexViewModels
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+    <div class="w3-container search-frame">
+        <div class="col-sm-8">
+            <div class="panel">
+                <div class="row">
+                    <div class="container col-xl-6 search-form">
+                        @using (Html.BeginForm("Lista_ogloszen", "Advert", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            <form>
+                                <p class="text-center">Szukam</p>
+                                <div class="form-group row">
+                                    <label for="colFormLabel" class="col-sm-3 col-form-label">Szukana fraza</label>
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(m => m.Search, new { @class = "form-control", placeholder = "np. farba dulux Zielona Orchidea", tabindex = 1 })
+
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Kategoria</label>
+                                    <div class="col-sm-9">
+
+                                        @Html.DropDownListFor(m => m.Category, Model.Categorys, new { @class = "form-control", tabindex = 2 })
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Miejsce</label>
+                                    <div class="col-sm-9">
+                                        @Html.TextBoxFor(m => m.Place, new { @class = "form-control", placeholder = "Wrocław", tabindex = 3 })
+                                        @Html.ValidationMessageFor(m => m.Place)
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-3 col-form-label">Zasięg</label>
+                                    <div class="col-sm-9">
+                                        <select class="form-control">
+                                            <option>1 km</option>
+                                            <option>2 km</option>
+                                            <option>5 km</option>
+                                            <option>10 km</option>
+                                            <option>30 km</option>
+                                            <option>Dowolny</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-danger btn-lg btn-block my col-sm-9 ml-auto btn-def">Szukaj</button>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w3-container background-clear">
+        <h1><span>Informacje ogólne</span></h1>
+        <div class="container padding-top-med  text-left color-black">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas consequuntur ratione eaque iure voluptatibus veritatis.
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut modi quod, dignissimos debitis quia molestiae, excepturi neque similique tempora quam nisi laboriosam. Recusandae hic delectus, culpa. Ab atque, dignissimos harum obcaecati, laborum fugit fuga at asperiores aspernatur aliquid, nam voluptate minima sit ducimus minus eveniet hic! Eaque omnis ipsa sapiente nesciunt repudiandae minima inventore cupiditate perferendis excepturi? Ducimus tempore assumenda aliquam, cum quibusdam nisi harum mollitia molestiae alias voluptatibus architecto odio cupiditate illum aut, deleniti quisquam ut facere quas. Minima nobis, atque culpa nulla assumenda incidunt iure. Nulla tempora a, sequi est voluptatibus quibusdam harum minima eum excepturi corporis ipsam delectus rem beatae nihil officiis voluptatem modi facere, dolore qui. Modi, delectus fuga dolor assumenda repudiandae ipsum, velit recusandae sequi sint quia odit, quis commodi expedita voluptatum, natus nam ullam! Expedita, earum provident possimus explicabo eos rem voluptas voluptate, incidunt, doloribus ullam nihil repellendus culpa dolor odio amet accusamus fuga. Autem possimus cumque itaque, ad nulla facere. Sunt magni odit molestias ab quod est dolores itaque et corporis, eveniet? Reprehenderit quaerat, repellat quisquam accusantium dolore iste sint corporis magnam nihil molestiae nesciunt velit natus nulla, vero, cupiditate. Quia aliquid quis sed quibusdam, veniam, delectus excepturi, corporis blanditiis dicta eaque fuga.
+        </div>
+    </div>
+    <div class="w3-container background-clear ">
+        <h1><span>Artykuły</span></h1>
+        <div class="container padding-top-med text-left color-black">
+            <div class="row">
+                <div class="col-sm-4">
+                    <h2 class="headline_2">Artykuł 1</h2>
+                    <p class="copy_2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas consequuntur ratione eaque iure voluptatibus veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                    <h2 class="headline_2 text-right">Więcej...</h2>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="headline_2">Artykuł 2</h2>
+                    <p class="copy_2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas consequuntur ratione eaque iure voluptatibus veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                    <h2 class="headline_2 text-right">Więcej...</h2>
+                </div>
+                <div class="col-sm-4">
+                    <h2 class="headline_2">Artykuł 3</h2>
+                    <p class="copy_2">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas consequuntur ratione eaque iure voluptatibus veritatis. Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    </p>
+                    <h2 class="headline_2 text-right">Więcej...</h2>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="w3-container background-clear">
+        <h1><span>Porady / Inspiracje</span></h1>
+        <div class="container padding-top-med padding-bottom-big text-center color-black">
+            <div class="row">
+                <div class="col-sm-6"> <iframe width="500" height="315" src="https://www.youtube.com/embed/_ob_g1oIw6w" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+                <div class="col-sm-6"> <iframe width="500" height="315" src="https://www.youtube.com/embed/1kAQIYnS8Z8" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+
+            </div>
+        </div>
+
+        <div class="brands py-1 color-black">
+            <p>
+                <marquee direction="left">
+                    <text><b>NASI PARTNERZY :</b></text>
+                    <img class="logo2" src="~/images/cieszynka.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/domalux.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/malfarb.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/cieszynka.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/domalux.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/malfarb.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/cieszynka.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/domalux.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/malfarb.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/cieszynka.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/domalux.jpg" alt="Logo2">
+                    <img class="logo2" src="~/images/malfarb.jpg" alt="Logo2">
+
+                </marquee>
+            </p>
+        </div>
+    </div>
+
+
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,133 @@
+﻿@model PPG_projekt.Models.AdminViewModels.DictionarySubObjView
+@{
+    ViewData["Title"] = "Index";
+}
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+<div>
+
+    <div class="sidenav col-lg-2">
+        @foreach (var item in Model.DictionaryObjects)
+        {
+            <a href=@Url.Action("SubObjList", "Admin", new { i = @item.DictionaryObjectId, activ=true})>@item.DictionaryObjectName </a>
+        }
+
+        @using (Html.BeginForm("AddDictionarySubObj", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <div class="center">
+                @Html.TextBox("name", "", new { @class = "form-control", placeholder = "Nazwa słownika" })
+            </div>
+
+            <button type="submit" class="btn btn-danger center">Dodaj </button>
+        }
+    </div>
+
+
+    <div class="row col-lg-12">
+        <div class="col col-lg-3"></div>
+
+
+        <div class=" admin-panel col-lg-9">
+
+
+            @using (Html.BeginForm("SubObjList", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <form>
+                    <div class="row center">
+
+                        <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("SubObjList", "Admin",new { i=Model.Page,activ=true })'">Aktywne </button>
+                        <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("SubObjList", "Admin",new { i = Model.Page, activ = false })'">Nieaktywne </button>
+
+                        <div class="col-lg-3 center">
+                            @Html.TextBox("search", "", new { @class = "form-control", placeholder = "szukaj" })
+                        </div>
+                        @Html.Hidden("i", Model.Page)
+                        <button type="submit" class="btn btn-danger col-lg-2 center">szukaj </button>
+
+                    </div>
+                </form>
+            }
+        </div>
+        <div class="col col-lg-3"></div>
+
+        <div class="col col-lg-9">
+            <table class="table admin-table col col-lg-9">
+                <thead class="table-head">
+                    <tr>
+                        <th>
+                            DictionarySubObjectName
+                        </th>
+                        <th>
+                            DictionaryObjectId
+                        </th>
+                        <th>
+                            DDictionarySubObjectId
+                        </th>
+
+                        <th></th>
+                    </tr>
+                </thead>
+
+                @using (Html.BeginForm("AddSubObj", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    <tr>
+                        <td>
+                            @Html.TextBox("name", "", new { @class = "form-control col-lg-10 center", placeholder = "Nowa podkategoria" })
+                        </td>
+                        <td colspan="2"></td>
+                        <td>
+                            @Html.Hidden("ID", Model.Page)
+                            <div class="img-zoom">
+                                <button type="submit" class="btn-transparent" title="Dodaj"> <img src="~/images/icons/icons8-plus-40.png" width="30" height="30" /></button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+
+
+
+
+                @foreach (var item in Model.DictionarySubObj)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DictionarySubObjectName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DictionaryObjectId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DictionarySubObjectId)
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <div class="img-zoom">
+                                    <button type="button" class="btn-transparent" title="Edytuj" onclick="location.href='@Url.Action("DictionarySubObjEdit", "Admin",new { id = item.DictionarySubObjectId, v = Model.Page })'"> <img src="~/images/icons/icons8-edit-40.png" width="30" height="30" /></button>
+                                </div>
+                                @if (item.Deactivate == false)
+                                {
+                                    <div class="img-zoom">
+                                        <button type="button" class="btn-transparent" title="Dezaktywuj" onclick="location.href='@Url.Action("DeleteSubObject", "Admin",new { id = item.DictionarySubObjectId, v = Model.Page })'"><img src="~/images/icons/icons8-unavailable-50.png" width="30" height="30" /></button>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="img-zoom">
+                                        <button type="button" class="btn-transparent" title="Aktywuj" onclick="location.href='@Url.Action("ActivateSubObject", "Admin",new { id = item.DictionarySubObjectId, v = Model.Page })'"><img src="~/images/icons/icons8-checkmark-50.png" width="30" height="30" /></button>
+                                    </div>
+                                }
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>

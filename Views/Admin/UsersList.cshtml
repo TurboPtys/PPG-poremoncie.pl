@@ -1,0 +1,85 @@
+﻿@model PPG_projekt.Models.AdminViewModels.UsersViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+<div class="container">
+    <div class="container admin-panel col-lg-12">
+        @using (Html.BeginForm("UsersList", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            <form>
+                <div class="row center">
+                    <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("UsersList", "Admin",new { activ=true})'">Aktywne </button>
+                    <button type="button" class="btn btn-danger col-lg-2 center" onclick="location.href='@Url.Action("UsersList", "Admin",new { activ=false})'">Nieaktywne </button>
+
+                    <div class="col-lg-3 center">
+                        @Html.TextBox("searchString", "", new { @class = "form-control", placeholder = "np. ID, email" })
+                    </div>
+                    <button type="submit" class="btn btn-danger col-lg-2 center">szukaj </button>
+
+                </div>
+            </form>
+        }
+    </div>
+</div>
+@*///////////////////////////////////////////////////////*@
+
+    <div class="container">
+        <table class="table admin-table">
+            <thead class="table-head">
+                <tr>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        ID
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            @foreach (var item in Model.Users)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <div class="img-zoom">
+                                <button type="button" class="btn-transparent" title="Szczegóły" onclick="location.href='@Url.Action("UserDetails", "Admin",new { id = item.Id })'"> <img src="~/images/icons/icons8-more-details-50.png" width="30" height="30" /></button>
+                            </div>
+                            @if (item.Deactivate == false)
+                            {
+                                <div class="img-zoom">
+                                    <button type="button" class="btn-transparent" title="Dezaktywuj" onclick="location.href='@Url.Action("DeactivateUser", "Admin",new { id = item.Id })'" ><img src="~/images/icons/icons8-unavailable-50.png" width="30" height="30" /></button>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="img-zoom">
+                                    <button type="button" class="btn-transparent" title="Aktywuj" onclick="location.href='@Url.Action("ActivateUser", "Admin",new { id = item.Id })'" ><img src="~/images/icons/icons8-checkmark-50.png" width="30" height="30" /></button>
+                                </div>
+                            }
+                            <div class="img-zoom">
+                                    <button type="button" class="btn-transparent" title="Usuń" onclick="location.href='@Url.Action("DeleteUser", "Admin",new { id = item.Id })'"><img src="~/images/icons/icons8-trash-50.png" width="30" height="30" /></button>
+                                </div>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+
+</div>
+

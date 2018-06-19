@@ -1,0 +1,115 @@
+﻿@model IEnumerable<PPG_projekt.Models.AdvertViewModels.AdvertsListVievModel>
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+
+
+<body>
+    <div class="container page-content">
+
+        <div class="row">
+            <div class="col-xl-4">
+                <div class="search-engine">
+                    <div class="container margin-top-small search-header">
+                        <h2>Wyszukiwanie</h2>
+                    </div>
+                    <hr>
+                    <div class="container categories text-left">
+                        <h4>Kategorie</h4>
+
+                        <select class="form-control">
+                            <option>Farby</option>
+                            <option>Kleje</option>
+                            <option>Gwoździe</option>
+                            <option>Inne</option>
+                            <option>Wszystkie</option>
+                        </select>
+                    </div>
+
+                    <div class="container margin-top-small text-left">
+                        <h4>Cena</h4>
+                        <div class="form-group row">
+                            <div class="col-sm-5">
+                                <input class="form-control" placeholder="Od">
+                            </div>
+                            <label class="col-sm-2 col-form-label">&nbsp&nbsp-</label>
+                            <div class="col-sm-5">
+                                <input class="form-control" placeholder="Do">
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="container text-left">
+                        <h4>Lokalizacja</h4>
+                        <div class="form-group">
+                            <input class="form-control" placeholder="np.ul. Kleczkowska 42, Wrocław">
+                        </div>
+
+                        <div class="form-group row">
+                            <h4><label class="col-sm-4 col-form-label">Zasięg</label></h4>
+                            <div class="col-sm-8">
+                                <select class="form-control">
+                                    <option>1 km</option>
+                                    <option>2 km</option>
+                                    <option>5 km</option>
+                                    <option>10 km</option>
+                                    <option>30 km</option>
+                                    <option>Dowolny</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container search">
+                        <button type="button" class="btn btn-danger btn-block">Wyszukaj</button>
+                    </div>
+                </div>
+
+                <div class="container add">
+                    <h4>Chcesz dodać ogłoszenie?</h4>
+                    <button type="button" class="btn btn-success btn-block">Dodaj</button>
+                </div>
+            </div>
+
+
+            <div class="col-xl-8 ">
+                <div class="offers-header margin-top-small">
+                    <h2>Ogłoszenia</h2>
+                </div>
+                <hr>
+                @foreach (var i in Model)
+                {
+                    <div class="row">
+                        <div class="col-xl-4">
+                            <div class="pic-offer">
+                                <img src="@i.Photo.Path" class="rounded" onerror="this.src='images/default.png'">
+                            </div>
+                        </div>
+
+                        <div class="col-xl-8">
+                            <div class="offer-header">
+                                <h2 onclick="location.href='@Url.Action("Ogloszenie", "Advert", new{id = i.Advert.AdvertId})'">@i.Advert.Title</h2>
+                            </div>
+                        
+                            <div class="row">
+                                <div class="col-xs-6 offer-lower-text text-left padding-left-small">@i.Address.City, ul. @i.Address.Street</div>
+                                <div class="col-xs-2 offer-lower-text font-weight-bold margin-right padding-right-small">@i.Advert.Price zł</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                }
+
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

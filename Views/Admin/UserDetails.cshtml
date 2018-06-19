@@ -1,0 +1,34 @@
+﻿@model PPG_projekt.Models.AppUser
+@{
+    ViewData["Title"] = "AdvertDetalis";
+}
+
+<!doctype html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="~/css/style.css" rel="stylesheet" />
+</head>
+
+
+<body>
+    <div class="container content">
+        <div class="col-12 admin">
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">ID:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Id) </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="colFormLabel" class="col-sm-4 col-form-label text-center">Email:</label>
+                <div class="col-sm-6">@Html.DisplayFor(modelItem => Model.Email)  </div>
+            </div>
+ 
+
+            <p> @Html.ActionLink("Back", "UsersList")</p>
+        </div>
+    </div>
+</body>
+</html>
